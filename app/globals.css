@@ -138,3 +138,17 @@
 .instrument {
   font-family: var(--font-instrument-serif);
 }
+
+/* Splash Screen styles */
+.splash-screen {
+  opacity: 1;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}

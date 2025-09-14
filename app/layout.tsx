@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Figtree, Instrument_Serif } from "next/font/google"
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
+import SplashScreen from "@/components/SplashScreen"
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -32,7 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${figtree.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SplashScreen />
+        {children}
+      </body>
     </html>
   )
 }
