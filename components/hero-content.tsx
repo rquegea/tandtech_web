@@ -22,7 +22,7 @@ export default function HeroContent() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => prevIndex + 1)
-    }, 4000)
+    }, 6000)
     return () => clearInterval(interval)
   }, [])
   

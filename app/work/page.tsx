@@ -17,38 +17,28 @@ export default function WorkPage() {
             WORK
           </a>
           <a
-            href="#"
+            href="/about"
             className="text-black/60 hover:text-black text-xs font-medium transition-colors duration-200 whitespace-nowrap"
           >
             ABOUT
           </a>
+          <span className="text-black/60 text-xs font-medium whitespace-nowrap hidden sm:block">JOURNAL</span>
           <a
-            href="#"
-            className="text-black/60 hover:text-black text-xs font-medium transition-colors duration-200 whitespace-nowrap hidden sm:block"
-          >
-            JOURNAL
-          </a>
-          <a
-            href="#"
+            href="/careers"
             className="text-black/60 hover:text-black text-xs font-medium flex items-center gap-1 transition-colors duration-200 whitespace-nowrap"
           >
-            CAREERS
+            CAREERS{" "}
             <span className="w-4 h-4 bg-black text-white rounded-full text-[10px] flex items-center justify-center">
               3
             </span>
           </a>
           <a
-            href="#"
+            href="/contact"
             className="text-black/60 hover:text-black text-xs font-medium transition-colors duration-200 whitespace-nowrap"
           >
             CONTACT
           </a>
-          <a
-            href="#"
-            className="text-black/60 hover:text-black text-xs font-medium transition-colors duration-200 whitespace-nowrap hidden lg:block"
-          >
-            SEARCH
-          </a>
+          <span className="text-black/60 text-xs font-medium whitespace-nowrap hidden lg:block">SEARCH</span>
         </nav>
       </header>
 

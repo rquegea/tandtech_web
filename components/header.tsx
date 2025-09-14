@@ -54,19 +54,19 @@ export default function Header() {
           WORK
         </a>
         <a
-          href="#"
+          href="/about"
           className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
         >
           ABOUT
         </a>
         <a
-          href="#"
+          href="/careers"
           className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
         >
           CAREERS
         </a>
         <a
-          href="#"
+          href="/contact"
           className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
         >
           CONTACT
@@ -97,21 +97,21 @@ export default function Header() {
               WORK
             </a>
             <a
-              href="#"
+              href="/about"
               className="text-white/80 hover:text-white text-sm font-light py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ABOUT
             </a>
             <a
-              href="#"
+              href="/careers"
               className="text-white/80 hover:text-white text-sm font-light py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               CAREERS
             </a>
             <a
-              href="#"
+              href="/contact"
               className="text-white/80 hover:text-white text-sm font-light py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(false)}
             >
