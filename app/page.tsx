@@ -6,13 +6,14 @@ import ShaderBackground from "@/components/shader-background"
 import AboutSection from "@/components/about-section"
 import ProjectsSection from "@/components/projects-section"
 
-export default function ShaderShowcase() {
+export default function HomePage() {
   return (
     <>
       <ShaderBackground>
         <Header />
         <HeroContent />
       </ShaderBackground>
+
       <AboutSection />
       <ProjectsSection />
     </>
