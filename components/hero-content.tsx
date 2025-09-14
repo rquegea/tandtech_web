@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
 
 const carouselItems = [
   { name: "MOET & CHANDON" },
@@ -33,7 +32,7 @@ export default function HeroContent() {
 
     // Calculamos el desplazamiento vertical para el efecto "escalera"
     if (distance === 0) {
-      opacity = 1; y = 0;
+      opacity = 1;
     } else if (distance === 1) {
       opacity = 0.5; y = currentIndex < activeIndex ? -ITEM_HEIGHT : ITEM_HEIGHT;
     } else if (distance === 2) {
@@ -48,7 +47,6 @@ export default function HeroContent() {
     return {
       opacity,
       transform: `translateY(${finalY}px)`,
-      fontWeight: distance === 0 ? "600" : "300",
       fontSize: "2.25rem",
     }
   }
@@ -74,14 +72,14 @@ export default function HeroContent() {
           <div className="w-full h-full">
             {extendedCarouselItems.map((item, index) => (
               <div
-                key={index}
+                key={`${item.name}-${index}`}
                 className="w-full flex items-center justify-start absolute transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)]"
                 style={{
                   height: `${ITEM_HEIGHT}px`,
                   ...getItemStyle(index),
                 }}
               >
-                <span className="text-white whitespace-nowrap">{item.name}</span>
+                <span className="text-white whitespace-nowrap font-light tracking-tight">{item.name}</span>
               </div>
             ))}
           </div>

@@ -5,7 +5,7 @@ export default function WorkPage() {
       <header className="relative z-20 flex items-center justify-between p-4 sm:p-6 bg-white">
         {/* Logo */}
         <div className="flex items-center">
-          <span className="text-black text-lg sm:text-xl font-bold tracking-wider">SAFFRON</span>
+          <img src="/trucoytrufa300.png" alt="Logo" className="h-16 sm:h-18 w-auto" decoding="async" />
         </div>
 
         {/* Navigation */}
