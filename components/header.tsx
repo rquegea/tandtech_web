@@ -18,18 +18,16 @@ export default function Header({ isSplashActive }: HeaderProps) {
 
   return (
     <header className="relative z-20 flex items-center w-full px-8 md:px-12 lg:px-16 py-6">
-      {/* --- CONTENEDOR IZQUIERDO --- */}
+      {/* --- CONTENEDOR IZQUIERDO (sin cambios) --- */}
       <div className="flex-shrink-0">
         <AnimatePresence initial={false} mode="wait">
           {isSplashActive ? (
-            // CAMBIO CLAVE: Contenedor con altura fija para el texto
             <motion.div
               key="splash-text-wrapper"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              // Estas clases aseguran que el contenedor tenga la misma altura que el logo
               className="flex items-center h-16 sm:h-18" 
             >
               <span className="text-white/90 text-sm font-light">
@@ -37,7 +35,6 @@ export default function Header({ isSplashActive }: HeaderProps) {
               </span>
             </motion.div>
           ) : (
-            // Logo que aparece después (su altura ya es h-16 sm:h-18)
             <motion.a
               href="/"
               key="logo-img"
@@ -56,7 +53,6 @@ export default function Header({ isSplashActive }: HeaderProps) {
         </AnimatePresence>
       </div>
 
-      {/* --- Espaciador invisible --- */}
       <div className="flex-grow" />
 
       {/* --- CONTENEDOR DERECHO (MENÚ) --- */}
@@ -69,22 +65,23 @@ export default function Header({ isSplashActive }: HeaderProps) {
           </div>
         </button>
 
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="/work" className="text-white/80 hover:text-white text-xs tracking-wider font-light transition-colors">WORK</a>
-          <a href="/about" className="text-white/80 hover:text-white text-xs tracking-wider font-light transition-colors">ABOUT</a>
-          <a href="/careers" className="text-white/80 hover:text-white text-xs tracking-wider font-light transition-colors">CAREERS</a>
-          <a href="/contact" className="text-white/80 hover:text-white text-xs tracking-wider font-light transition-colors">CONTACT</a>
+        {/* Menú: Lora por defecto; WORK en Cormorant Garamond negrita */}
+        <nav className="hidden md:flex items-center gap-8 font-lora">
+          <a href="/work" className="text-white/90 hover:text-white text-xs tracking-wide font-cormorant font-semibold uppercase transition-colors">WORK</a>
+          <a href="/about" className="text-white/80 hover:text-white text-xs tracking-wide font-light uppercase transition-colors">ABOUT</a>
+          <a href="/careers" className="text-white/80 hover:text-white text-xs tracking-wide font-light uppercase transition-colors">CAREERS</a>
+          <a href="/contact" className="text-white/80 hover:text-white text-xs tracking-wide font-light uppercase transition-colors">CONTACT</a>
         </nav>
       </div>
 
-      {/* Menú desplegable para móvil */}
+      {/* --- Menú móvil --- */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-white/10">
-          <nav className="flex flex-col p-4 space-y-2">
-            <a href="/work" className="text-white/80 hover:text-white text-sm font-light py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>WORK</a>
-            <a href="/about" className="text-white/80 hover:text-white text-sm font-light py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>ABOUT</a>
-            <a href="/careers" className="text-white/80 hover:text-white text-sm font-light py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>CAREERS</a>
-            <a href="/contact" className="text-white/80 hover:text-white text-sm font-light py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>CONTACT</a>
+          <nav className="flex flex-col p-4 space-y-2 font-lora">
+            <a href="/work" className="text-white/90 hover:text-white text-sm font-cormorant font-semibold uppercase py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>WORK</a>
+            <a href="/about" className="text-white/80 hover:text-white text-sm font-light uppercase py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>ABOUT</a>
+            <a href="/careers" className="text-white/80 hover:text-white text-sm font-light uppercase py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>CAREERS</a>
+            <a href="/contact" className="text-white/80 hover:text-white text-sm font-light uppercase py-3 px-4 rounded-lg hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)}>CONTACT</a>
           </nav>
         </div>
       )}

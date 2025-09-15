@@ -1,53 +1,37 @@
-// components/shader-background.tsx
+"use client";
 
-"use client"
-
-import type React from "react"
-import { useRef } from "react"
-import { MeshGradient } from "@paper-design/shaders-react"
+import type React from "react";
+import { useRef } from "react";
+import { MeshGradient } from "@paper-design/shaders-react";
 
 interface ShaderBackgroundProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function ShaderBackground({ children }: ShaderBackgroundProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
+    // AÑADIMOS flex y flex-col aquí para que organice a sus hijos verticalmente
     <div
       ref={containerRef}
-      // AÑADIMOS flex y flex-col aquí para que el layout vertical funcione
       className="min-h-screen bg-black relative overflow-hidden flex flex-col"
     >
-      {/* SVG Filters (esto no cambia) */}
-      <svg className="absolute inset-0 w-0 h-0">
+      {/* --- Elementos visuales del fondo (no afectan al layout) --- */}
+      <svg className="absolute inset-0 w-0 h-0 pointer-events-none">
         <defs>
           <filter id="glass-effect" x="-50%" y="-50%" width="200%" height="200%">
             <feTurbulence baseFrequency="0.005" numOctaves="1" result="noise" />
             <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.3" />
-            <feColorMatrix
-              type="matrix"
-              values="1 0 0 0 0.02
-                      0 1 0 0 0.02
-                      0 0 1 0 0.05
-                      0 0 0 0.9 0"
-              result="tint"
-            />
+            <feColorMatrix type="matrix" values="1 0 0 0 0.02 0 1 0 0 0.02 0 0 1 0 0.05 0 0 0 0.9 0" result="tint"/>
           </filter>
           <filter id="gooey-filter" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-              result="gooey"
-            />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="gooey"/>
             <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
           </filter>
         </defs>
       </svg>
-
-      {/* Background Shaders (esto no cambia) */}
       <MeshGradient
         className="absolute inset-0 w-full h-full"
         colors={["#000000", "#dc2626", "#ffffff", "#7f1d1d", "#991b1b"]}
@@ -62,8 +46,8 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         style={{ backgroundColor: "transparent" }}
       />
       
-      {/* Los hijos (Header, HeroContent) se renderizarán aquí dentro del contenedor flex */}
+      {/* Los hijos (Header, HeroContent, etc.) se renderizan DENTRO del contenedor flex */}
       {children}
     </div>
-  )
+  );
 }

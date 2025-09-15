@@ -152,3 +152,13 @@
 .fade-out {
   animation: fadeOut 0.5s ease forwards;
 }
+
+
+.font-lora {
+  font-family: var(--font-lora);
+}
+
+/* Cormorant Garamond util */
+.font-cormorant {
+  font-family: var(--font-cormorant);
+}
