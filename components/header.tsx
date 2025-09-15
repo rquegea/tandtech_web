@@ -18,21 +18,26 @@ export default function Header({ isSplashActive }: HeaderProps) {
 
   return (
     <header className="relative z-20 flex items-center w-full px-8 md:px-12 lg:px-16 py-6">
-      {/* Elemento izquierdo (logo o texto) */}
-      <div className="flex items-center flex-shrink-0">
+      {/* --- CONTENEDOR IZQUIERDO --- */}
+      <div className="flex-shrink-0">
         <AnimatePresence initial={false} mode="wait">
           {isSplashActive ? (
-            <motion.span
-              key="splash-text"
+            // CAMBIO CLAVE: Contenedor con altura fija para el texto
+            <motion.div
+              key="splash-text-wrapper"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="text-white/90 text-sm font-light"
+              // Estas clases aseguran que el contenedor tenga la misma altura que el logo
+              className="flex items-center h-16 sm:h-18" 
             >
-              Making <span className="italic instrument">brands</span> visible
-            </motion.span>
+              <span className="text-white/90 text-sm font-light">
+                Making <span className="italic instrument">brands</span> visible
+              </span>
+            </motion.div>
           ) : (
+            // Logo que aparece después (su altura ya es h-16 sm:h-18)
             <motion.a
               href="/"
               key="logo-img"
@@ -51,11 +56,10 @@ export default function Header({ isSplashActive }: HeaderProps) {
         </AnimatePresence>
       </div>
 
-      {/* Espaciador invisible */}
+      {/* --- Espaciador invisible --- */}
       <div className="flex-grow" />
 
-      {/* Elemento derecho (menú de navegación) */}
-      {/* AÑADIMOS 'flex items-center' AQUÍ PARA ALINEAR TODO VERTICALMENTE */}
+      {/* --- CONTENEDOR DERECHO (MENÚ) --- */}
       <div className="flex items-center flex-shrink-0">
         <button onClick={toggleMobileMenu} className="md:hidden text-white p-2" aria-label="Toggle mobile menu">
           <div className="w-6 h-6 flex flex-col justify-center space-y-1">
