@@ -14,7 +14,6 @@ const ITEM_HEIGHT = 64 // Corresponde a h-16 en Tailwind
 
 export default function HeroContent() {
   const extendedCarouselItems = Array(5).fill(carouselItems).flat()
-
   const initialIndex = Math.floor(extendedCarouselItems.length / 2)
   const [activeIndex, setActiveIndex] = useState(initialIndex)
 
@@ -30,7 +29,6 @@ export default function HeroContent() {
     let opacity = 0
     let y = 0
 
-    // Calculamos el desplazamiento vertical para el efecto "escalera"
     if (distance === 0) {
       opacity = 1;
     } else if (distance === 1) {
@@ -41,7 +39,6 @@ export default function HeroContent() {
       opacity = 0.1; y = currentIndex < activeIndex ? -ITEM_HEIGHT * 3 : ITEM_HEIGHT * 3;
     }
 
-    // Centramos el elemento activo y desplazamos los demás
     const finalY = y + (ITEM_HEIGHT * 3);
 
     return {
@@ -53,12 +50,14 @@ export default function HeroContent() {
 
   return (
     <main className="absolute inset-0 z-10 flex w-full h-full">
+      {/* Columna Izquierda con el texto */}
       <div className="w-1/2 flex justify-end items-center pr-8">
         <h1 className="text-4xl lg:text-5xl xl:text-6xl text-right tracking-tight font-light text-white leading-none">
           Making <span className="font-medium italic instrument">brands</span> visible
         </h1>
       </div>
 
+      {/* Columna Derecha con el carrusel */}
       <div className="w-1/2 flex justify-start items-center pl-8">
         <div
           className="relative"
@@ -68,7 +67,6 @@ export default function HeroContent() {
             maxWidth: '500px'
           }}
         >
-          {/* Ya no necesitamos motion.div aquí, la transición la maneja el CSS */}
           <div className="w-full h-full">
             {extendedCarouselItems.map((item, index) => (
               <div

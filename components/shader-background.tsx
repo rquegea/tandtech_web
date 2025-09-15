@@ -1,7 +1,8 @@
+// components/shader-background.tsx
+
 "use client"
 
 import type React from "react"
-
 import { useRef } from "react"
 import { MeshGradient } from "@paper-design/shaders-react"
 
@@ -13,8 +14,12 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-black relative overflow-hidden">
-      {/* SVG Filters */}
+    <div
+      ref={containerRef}
+      // AÑADIMOS flex y flex-col aquí para que el layout vertical funcione
+      className="min-h-screen bg-black relative overflow-hidden flex flex-col"
+    >
+      {/* SVG Filters (esto no cambia) */}
       <svg className="absolute inset-0 w-0 h-0">
         <defs>
           <filter id="glass-effect" x="-50%" y="-50%" width="200%" height="200%">
@@ -42,7 +47,7 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         </defs>
       </svg>
 
-      {/* Background Shaders */}
+      {/* Background Shaders (esto no cambia) */}
       <MeshGradient
         className="absolute inset-0 w-full h-full"
         colors={["#000000", "#dc2626", "#ffffff", "#7f1d1d", "#991b1b"]}
@@ -56,7 +61,8 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         wireframe
         style={{ backgroundColor: "transparent" }}
       />
-
+      
+      {/* Los hijos (Header, HeroContent) se renderizarán aquí dentro del contenedor flex */}
       {children}
     </div>
   )
